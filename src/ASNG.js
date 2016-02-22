@@ -7,6 +7,4 @@ let model = new Model({
     grid_columns: 100
 });
 
-console.log(model);
-
 model.run();

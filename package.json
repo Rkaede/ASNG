@@ -1,0 +1,26 @@
+{
+  "name": "asng",
+  "version": "0.0.1",
+  "description": "A JavasScript implementation of the ASNG model by Andrew Reilly.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine-core": "^2.4.1",
+    "karma": "^0.13.21",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-jasmine": "^0.3.7"
+  },
+  "scripts": {
+    "test": "./node_modules/karma/bin/karma start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rkaede/ASNG.git"
+  },
+  "author": "Corey McGeachie",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rkaede/ASNG/issues"
+  },
+  "homepage": "https://github.com/Rkaede/ASNG#readme"
+}
