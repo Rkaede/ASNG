@@ -9,6 +9,7 @@ $ npm install
 ```
 
 ## Testing
+Chrome Canary will be required to run the tests as Chrome has a [performance issue](https://github.com/karma-runner/karma-chrome-launcher/issues/44). This will be changed to Chrome Stable once the --disable-background-timer-throttling flag is available.
 ```bash
 $ npm test
 ```
