@@ -10,10 +10,10 @@ class ToroidalGrid {
      */
     constructor(rows, columns) {
         /** @member {Number} */
-        this.rows = rows;
+        this.rows = rows || 0;
 
         /** @member {Number} */
-        this.columns = columns;
+        this.columns = columns || 0;
     }
 
     /**
