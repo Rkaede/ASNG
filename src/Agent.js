@@ -23,17 +23,17 @@ class Agent {
         this.min_radius = min_radius;
         this.max_radius = max_radius;
 
-        if (!this.has_collected_agents) {
-            this.collect_agents();
-        }
-        for (let e_agent of this.extra_version_agents) {
-            if (!e_agent.has_collected_agents) {
-                e_agent.collect_agents(); //params not needed?
-            }
-            if (e_agent.agreeable_agents.includes(this)) {
-                this.add_memory(e_agent);
-            }
-        }
+        //if (!this.has_collected_agents) {
+            //this.collect_agents();
+        //}
+        //for (let e_agent of this.extra_version_agents) {
+            //if (!e_agent.has_collected_agents) {
+                //e_agent.collect_agents(); //params not needed?
+            //}
+            //if (e_agent.agreeable_agents.includes(this)) {
+                //this.add_memory(e_agent);
+            //}
+        //}
         //this.status = this.memory.length;
     }
 
