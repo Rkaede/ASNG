@@ -16,6 +16,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       './src/ToroidalGrid.js',
+      './src/Ring.js',
       './src/Network.js',
       './src/Model.js',
       './src/Agent.js',
