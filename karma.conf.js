@@ -15,7 +15,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './src/ToroidalGrid.js',
       './src/Ring.js',
       './src/Network.js',
       './src/Model.js',
@@ -63,6 +62,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['ChromeCanary'],
+    //browsers: ['Chrome'],
 
 
     // Continuous Integration mode

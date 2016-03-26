@@ -8,18 +8,14 @@ class Model {
      * @param {Object} [config]                  Configuration settings for the network.
      * @param {Number} [config.total_agents=100] The total number of agents in the model.
      * @param {Number} [config.max_ticks=100]    Maximum number of ticks. [???]
-     * @param {Number} [config.grid_rows=10]     Number of rows on the grid. [???]
-     * @param {Number} [config.grid_columns=10]  Number of columns on the grid. [???]
      */
     constructor(config) {
         config = config || {};
         this.total_agents = config.total_agents || 100;
         this.max_ticks    = config.max_ticks    || 100;
-        this.grid_rows    = config.grid_rows    || 10;
-        this.grid_columns = config.grid_columns || 10;
 
         this.agents = [];
-        this.grid = new ToroidalGrid(this.grid_rows, this.grid_columns);
+        this.ring = 1;
         this.create_agents();
         this.reset();
     }
@@ -31,9 +27,8 @@ class Model {
     create_agents() {
         for (let i = 0; i < this.total_agents; i++) {
             let agent = new Agent({
-                id:     i + 1,
-                column: Math.round(Math.random() * this.grid.rows) + 1,
-                row:    Math.round(Math.random() * this.grid.columns) + 1
+                id:   i + 1,
+                pos:  Math.random()
             });
             this.agents.push(agent);
         }
@@ -44,28 +39,16 @@ class Model {
     * If not move logic into constructor.
     * */
     reset() {
-        this.density       = this.agents.length / this.grid.total_cells();
-
-        /* [???] Possibly move this to it's own function */
-        this.max_area      = 150 / this.density;
-        this.max_radius_sq = this.max_area / Math.PI;
-        this.max_radius    = Math.sqrt(this.max_radius_sq);
-        this.max_radius    = this.max_radius - 1;
-        this.max_radius    = (this.max_radius > 100) ? 100 : this.max_radius;
-
-        /* [???] Possibly move this to it's own function */
-        this.min_area      = 1 / this.density;
-        this.min_radius_sq = this.min_area / Math.PI;
-        this.min_radius    = Math.sqrt(this.min_radius_sq);
-        this.min_radius    = (this.min_radius < 1) ? 1 : this.min_radius;
-        this.min_radius    = (this.min_radius >= this.max_radius) ? this.max_radius - 1 : this.min_radius;
+        this.density   = this.ring / this.agents.length;
+        this.min_range = this.density / 1;
+        this.max_range = (this.agents.length > 150) ? this.density * 150 : 1;
 
         for (let agent of this.agents) {
-            agent.set_values();
+            agent.set_values(this);
         }
 
         for (let agent of this.agents) {
-            agent.init(this.min_radius, this.max_radius);
+            agent.init();
         }
 
         for (let agent of this.agents) {
